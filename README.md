@@ -1,6 +1,4 @@
-This `release_package` folder represents the 29 Jan 2026 version of the code.
-
-File tree on January 29th 2026
+File tree as of January 29th 2026
 ```
 release_package
 ├── README.md
