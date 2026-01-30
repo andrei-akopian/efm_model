@@ -23,7 +23,18 @@ Below is the excerpt from the paper describing the structure of the model:
 
 ![page 3 - tables of constants](assets/page3.png)
 
-# Usage
+## Instalation
+
+```
+git clone https://github.com/andrei-akopian/efm_model/tree/main
+```
+or click the green dropdown at the top and download as `.zip`
+
+Install dependencies via: `pip3 install -r requirements.txt`. There is nothing special, mostly Python standard library, `numpy`, `pandas`, and `matplotlib`.
+
+And install [ffmpeg](https://ffmpeg.org/) necessary to create video. If you are on MacOS and have [brew](https://brew.sh/), this is easily done via `brew install ffmpeg`.
+
+## Usage
 
 To run simulations, use `simulation.py`, `visualization.py`, and `visualize_graph.py`. `simulation.py` preforms the full simulation start to finish, and exports the timeline to `.json` files. To view the `.json` files use the visualization scripts. The visualization scripts only visualize and don't simulate anything.
 
@@ -36,6 +47,8 @@ python3 visualize_graph.py simulation_data_E30_F3_M3.json simulation_data_E30_F3
 # to create video, similarly run (beware the reendering is slow)
 python3 visualization.py simulation_data_E30_F3_M3.json simulation_data_E30_F3_M0.json
 ```
+
+Video and image outputs of the above code are in [example_outputs](example_outputs) folder. The `.json` files are big (~20MB in size) and were excluded.
 
 Alternatively, look at `Makefile` and run preset scripts with `make <command>` like `make doublegraph`
 
