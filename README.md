@@ -48,6 +48,8 @@ python3 visualize_graph.py simulation_data_E30_F3_M3.json simulation_data_E30_F3
 python3 visualization.py simulation_data_E30_F3_M3.json simulation_data_E30_F3_M0.json
 ```
 
+`simulation.py` should take about ~2s to run for an 80 second simulation and 30/3/3 initial cell counts. `visualize_graph.py` should take a compareable ~2s on the simulation's output. `visualization.py` (reendering video) can take up to 5 minutes depending on the settings.
+
 Video and image outputs of the above code are in [example_outputs](example_outputs) folder. The `.json` files are big (~20MB in size) and were excluded.
 
 Alternatively, look at `Makefile` and run preset scripts with `make <command>` like `make doublegraph`
@@ -71,6 +73,8 @@ Alternatively, look at `Makefile` and run preset scripts with `make <command>` l
 ```
 Note that because reendering video is magnitudes slower than performing the simulations, by default only every 5th simulation step will be reendered. For a smoother simulation use `--release`. `--speedup` produces a faster video, it has no effect on the actual simulation.
 
+---
+
 To create a graph of the average of multiple simulations, use `table_exporter.py` and `grapher_v3.py`.
 
 `table_exporter.py` will convert the json files to `.csv`s with time and cell count columns.
@@ -79,9 +83,9 @@ To create a graph of the average of multiple simulations, use `table_exporter.py
 python3 table_exporter.py simulation_data_E30_F3_M3.json simulation_data_E30_F3_M0.json
 ```
 
-`bash massrunner.sh` will simulate, convert to csv, and create a large number of simulations to be graphed. (Warning: it will flood the current directory with a large number of files.)
+`bash massrunner.sh` will simulate, convert to csv, and create a large number of simulations to be graphed. (Warning: it will flood the current directory with a large number of files.) Mass runner takes ~4s * number of simulations.
 
-Then `grapher_v3.py` can graph their average and produce a `.svg` file containing the graph. However because `grapher_v3.py` is expected to be used on a large number of files at once, it doesn't accept the `.csv` files as arguments, and rather scans the derectories for `*_seed*.csv` wildcard marching files specifically. The text marched by the first star will be used to group the gaphs into `M0` and `M3` categories. Due to this complexity, `grapher_v3.py` best ran after `massrunner.sh`.
+Then `grapher_v3.py` can graph their average and produce a `.svg` file containing the graph. It should take around ~1s per input file. However because `grapher_v3.py` is expected to be used on a large number of files at once, it doesn't accept the `.csv` files as arguments, and rather scans the derectories for `*_seed*.csv` wildcard marching files specifically. The text marched by the first star will be used to group the gaphs into `M0` and `M3` categories. Due to this complexity, `grapher_v3.py` best ran after `massrunner.sh`. 
 
 ```sh
 python3 grapher_v3.py
