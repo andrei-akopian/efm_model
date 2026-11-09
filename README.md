@@ -32,13 +32,27 @@ Discrete-time 1D agent-based simulation of tissue growth and dynamics by computa
 Growth rates and death probabilities are defined as follows:
 
 1. Epithelial Cells (E). Epithelial cells are agents that act as the primary drivers of tissue size. Growth: E cells width (WE) increase rate is dependent on hormone levels and is bounded by Fibroblast growth rate:
-  
-Where µE = 0.5 is the base rate, SH(t) is the hormone multiplier; NE is total E cells number, and is the global fibroblast density - number of fibroblasts NF per total width of fibroblasts layer WFtotal. Division: occurs when width WE ≥ 1.0. Upon division, E cells have a 25% probability of becoming Lobular E cells (terminal differentiated state, no further division). Death: Base probability is constant 0.036/s. 
+
+$$
+\Delta W_E = \mu_E \cdot SH(t) \cdot (\frac{\rho_F}{N_E})\cdot \Delta t)
+$$
+
+Where µE = 0.5 is the base rate, SH(t) is the hormone multiplier; NE is total E cells number, and $\rho_F = \frac{N_F}{W^{\texttt{total}}_F}$ is the global fibroblast density - number of fibroblasts NF per total width of fibroblasts layer WFtotal. Division: occurs when width WE ≥ 1.0. Upon division, E cells have a 25% probability of becoming Lobular E cells (terminal differentiated state, no further division). Death: Base probability is constant 0.036/s. 
 
 2. Fibroblasts (F). Fibroblasts are agents that fill the available space defined by E cells. Growth: Fibroblast width (WE) increases based on hormone levels and macrophage support.  
-Where μF =0.14 is the base rate. SFM=4.0 if macrophage density is not lower than fibroblasts density ρM ≥ ρF , otherwise SFM=1.0.  is macrophage density - number of macrophages NM per total width of macrophages layer WMtotal. Death: Active only during the Decline phase (SH3) with probability of 0.05/s. 
+
+$$
+\Delta W_F = \mu_F \cdot SH(t) \cdot S_{FM}\cdot \Delta t
+$$
+
+Where μF =0.14 is the base rate. SFM=4.0 if macrophage density is not lower than fibroblasts density ρM ≥ ρF , otherwise SFM=1.0. $\rho_M = \frac{N_M}{W^{\texttt{total}}_M}$ is macrophage density - number of macrophages NM per total width of macrophages layer WMtotal. Death: Active only during the Decline phase (SH3) with probability of 0.05/s. 
 
 3. Macrophages (M). Macrophages act as support agents for fibroblasts. Their primary function is to authorize rapid fibroblast growth via presence. Growth: M growth rate is dependent on fibroblast growth rate and density to ensure that macrophages fill the available space provided by fibroblasts
+
+$$
+\Delta W_M = \mu_M \cdot \frac{\rho_F}{N_M} \cdot \Delta t
+$$
+
 Where μM = μF is macrophage base growth rate. Division: Occurs when width WM ≥ 12.0. Death: Active only during the Decline phase (SH3) with probability of 0.05/s. 
 The tables below list (a) global parameters and (b) the final effective growth parameters applied to agents during each simulation phase, which include the base growth rates with the hormone multipliers to obtain growth rates and death probabilities by phase. Simulations start with the same initial cell numbers, each cell assigned randomized width. Simulations were repeated 10 times to obtain average dynamics of E, M, F numbers over time.
 
