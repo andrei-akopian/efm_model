@@ -73,13 +73,13 @@ The tables below list (a) global parameters and (b) the final effective growth p
 #### Effective Phase Parameters
 | Cell Type	| Parameter	| SH 1 (Equil) | SH 2 (Growth)	| SH 3 (Decline) |
 | - | - | - | - | - |
-	| Epithelial (E) |Base growth rate (w/s)	| 0.05 |	1.00 |	0.00 |
-	| | Death prob (/s)	|0.036|	0.036	|0.036|
-	|Fibroblast (F)|Base growth rate (w/s)|	0.042	|0.14|	0.00|
-	| | Growth rate at contact with macrophage|	0.21	|0.56|	0.00|
-	| | Death prob (/s)|	0.00|	0.00|	0.05|
-	|Macrophage (M)|Base growth rate (w/s)|	0.042|	0.14|	0.00|
-	| | Death prob| (/s)|	0.00	|0.00|	0.05|
+| Epithelial (E) |Base growth rate (w/s)	| 0.05 |	1.00 |	0.00 |
+| | Death prob (/s)	|0.036|	0.036	|0.036|
+|Fibroblast (F)|Base growth rate (w/s)|	0.042	|0.14|	0.00|
+| | Growth rate at contact with macrophage|	0.21	|0.56|	0.00|
+| | Death prob (/s)|	0.00|	0.00|	0.05|
+|Macrophage (M)|Base growth rate (w/s)|	0.042|	0.14|	0.00|
+| | Death prob| (/s)|	0.00	|0.00|	0.05|
 
 
 ## Instalation
